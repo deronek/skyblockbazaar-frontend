@@ -41,12 +41,6 @@ class NameField extends React.Component {
         this.setState({ ...this.state, value: event.target.value });
     }
 
-    setStateAsync(state) {
-        return new Promise((resolve) => {
-            this.setState(state, resolve)
-        });
-    }
-
     async handleSubmit(event) {
         try {
             if (!this.state.value) {
