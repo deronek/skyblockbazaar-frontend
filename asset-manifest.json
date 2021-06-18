@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/skyblockbazaar-frontend/static/css/main.fbe5e551.chunk.css",
+    "main.js": "/skyblockbazaar-frontend/static/js/main.1f76c6bd.chunk.js",
+    "main.js.map": "/skyblockbazaar-frontend/static/js/main.1f76c6bd.chunk.js.map",
+    "runtime-main.js": "/skyblockbazaar-frontend/static/js/runtime-main.71279108.js",
+    "runtime-main.js.map": "/skyblockbazaar-frontend/static/js/runtime-main.71279108.js.map",
+    "static/js/2.39531715.chunk.js": "/skyblockbazaar-frontend/static/js/2.39531715.chunk.js",
+    "static/js/2.39531715.chunk.js.map": "/skyblockbazaar-frontend/static/js/2.39531715.chunk.js.map",
+    "static/js/3.70861686.chunk.js": "/skyblockbazaar-frontend/static/js/3.70861686.chunk.js",
+    "static/js/3.70861686.chunk.js.map": "/skyblockbazaar-frontend/static/js/3.70861686.chunk.js.map",
+    "index.html": "/skyblockbazaar-frontend/index.html",
+    "static/css/main.fbe5e551.chunk.css.map": "/skyblockbazaar-frontend/static/css/main.fbe5e551.chunk.css.map",
+    "static/js/2.39531715.chunk.js.LICENSE.txt": "/skyblockbazaar-frontend/static/js/2.39531715.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.71279108.js",
+    "static/js/2.39531715.chunk.js",
+    "static/css/main.fbe5e551.chunk.css",
+    "static/js/main.1f76c6bd.chunk.js"
+  ]
+}
