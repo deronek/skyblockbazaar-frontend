@@ -41,7 +41,7 @@ class NameField extends React.Component {
     }
 
     async handleSubmit(event) {
-        await fetch("http://127.0.0.1:8080/api/v1/main/" + this.state.value)
+        await fetch("https://skyblockbazaar.herokuapp.com/api/v1/main/" + this.state.value)
         .then( res => {
             if(res.status === 404)
             {
