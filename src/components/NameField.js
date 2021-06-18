@@ -1,4 +1,5 @@
 import React from 'react';
+import fetchTimeout from 'fetch-timeout';
 
 const buttonStyle = {
     backgroundColor: '#8899a6',
@@ -30,44 +31,70 @@ class NameField extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { value: ''};
+        this.state = { value: '', connecting: false };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
-        this.setState({ value: event.target.value });
+        this.setState({ ...this.state, value: event.target.value });
+    }
+
+    setStateAsync(state) {
+        return new Promise((resolve) => {
+            this.setState(state, resolve)
+        });
     }
 
     async handleSubmit(event) {
-        await fetch("https://skyblockbazaar.herokuapp.com/api/v1/main/" + this.state.value)
-        .then( res => {
-            if(res.status === 404)
-            {
-                alert("Player not found")
-                return Promise.reject()
-            }
-            return res
-        })
-        .then(res => res.json())
-        .then(res => {
-            this.props.setMinionMap(res.minionMap.minions)
-            this.props.setProductMap(res.productMap.products)
-            this.props.setPlayerUuid(res.id)
-        })
-        .then(event.preventDefault());
+        try {
+            this.setState({ ...this.state, connecting: true })
+            await fetchTimeout("https://skyblockbazaar.herokuapp.com/api/v1/main/" + this.state.value, {}, 30000, 'API timeout')
+                .then(res => {
+                    if (res.status === 404) {
+                        alert("Player not found")
+                        return Promise.reject()
+                    }
+                    return res
+                })
+                .then(res => res.json())
+                .then(res => {
+                    this.props.setMinionMap(res.minionMap.minions)
+                    this.props.setProductMap(res.productMap.products)
+                    this.props.setPlayerUuid(res.id)
+                })
+                .then(event.preventDefault())
+
+        } catch (err) {
+            console.log(err)
+        } finally {
+            this.setState({ ...this.state, connecting: false })
+        }
+
     }
 
     render() {
+        let connecting;
+        if (this.state.connecting) {
+            connecting = 'Connecting to the API...'
+        }
+        else {
+            connecting = ''
+        }
         return (
-            <form onSubmit={this.handleSubmit} style={formStyle}>
-                <label>
-                    Name:
-                </label>
-                <input id='playerName' type="text" value={this.state.value} onChange={this.handleChange} style={inputStyle} />
-                <input className="Button" type="submit" value="Update tables" style={buttonStyle} />
-            </form>
+            <>
+                <div>
+                </div>
+                <form onSubmit={this.handleSubmit} style={formStyle}>
+                    <label>
+                        Name:
+                    </label>
+                    <input id='playerName' type="text" value={this.state.value} onChange={this.handleChange} style={inputStyle} />
+                    <input className="Button" type="submit" value="Update tables" style={buttonStyle} />
+                </form>
+                {connecting}
+            </>
         );
     }
 }

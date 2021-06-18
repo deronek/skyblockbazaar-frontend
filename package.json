@@ -2,7 +2,7 @@
   "name": "skyblockbazaar-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://deronek.github.io/skyblockbazaar-frontend",
+  "homepage": "http://deronek.github.io/skyblockbazaar-frontend/",
   "dependencies": {
     "@material-table/core": "^3.0.6",
     "@material-ui/core": "^4.11.4",
@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "fetch-timeout": "^0.0.2",
     "gh-pages": "^3.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
