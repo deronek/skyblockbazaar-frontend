@@ -49,6 +49,10 @@ class NameField extends React.Component {
 
     async handleSubmit(event) {
         try {
+            if (!this.state.value) {
+                alert("Name must not be empty")
+                return
+            }
             this.setState({ ...this.state, connecting: true })
             await fetchTimeout("https://skyblockbazaar.herokuapp.com/api/v1/main/" + this.state.value, {}, 30000, 'API timeout')
                 .then(res => res.json())
