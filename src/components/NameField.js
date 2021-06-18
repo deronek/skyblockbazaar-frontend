@@ -51,14 +51,16 @@ class NameField extends React.Component {
         try {
             this.setState({ ...this.state, connecting: true })
             await fetchTimeout("https://skyblockbazaar.herokuapp.com/api/v1/main/" + this.state.value, {}, 30000, 'API timeout')
-                .then(res => {
-                    if (res.status === 404) {
-                        alert("Player not found")
-                        return Promise.reject()
-                    }
-                    return res
-                })
                 .then(res => res.json())
+                .then(res => {
+                    switch (res.status) {
+                        case 200:
+                            return res
+                        default:
+                            alert(res.message)
+                            return Promise.reject()
+                    }
+                })
                 .then(res => {
                     this.props.setMinionMap(res.minionMap.minions)
                     this.props.setProductMap(res.productMap.products)

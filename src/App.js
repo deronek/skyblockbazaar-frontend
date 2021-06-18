@@ -4,6 +4,7 @@ import MinionTable from './components/MinionTable'
 import ProductTable from './components/ProductTable'
 import NameField from './components/NameField'
 import SkinView from './components/SkinView'
+import Github from './images/github.png'
 
 function App() {
   const [playerId, setPlayerId] = useState('')
@@ -38,8 +39,16 @@ function App() {
           <ProductTable products={products} />
         </div>
       </div>
-      <footer> <h4>by Mateusz Dionizy</h4></footer>
-    </div>
+      <footer>
+        <h4>by Mateusz Dionizy</h4>
+        <a href="https://github.com/deronek/skyblockbazaar-frontend">
+          <img
+            alt="Github"
+            src={Github}
+            width='32px' />
+        </a>
+      </footer>
+    </div >
   );
 }
 
